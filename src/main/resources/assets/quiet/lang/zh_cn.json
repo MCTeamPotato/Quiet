@@ -1,0 +1,6 @@
+{
+  "message.quiet.hide": "§l§7隐藏了一条消息",
+  "message.quiet.click_show": "点击查看隐藏消息",
+  "message.quiet.quiet": "§4§o无法发送消息，禁言中",
+  "message.quiet.mute": "你已被禁言，时长： %s"
+}

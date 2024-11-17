@@ -1,0 +1,6 @@
+{
+  "message.quiet.hide": "§l§7A message was hidden",
+  "message.quiet.click_show": "Click View hidden messages",
+  "message.quiet.quiet": "§4§oUnable to send a message, muted",
+  "message.quiet.mute": "You have been muted for a period of time: %s"
+}

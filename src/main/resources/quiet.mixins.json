@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.teampotato.quiet.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "quiet.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "ChatScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
