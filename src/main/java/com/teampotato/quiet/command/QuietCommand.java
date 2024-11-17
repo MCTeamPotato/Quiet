@@ -20,7 +20,7 @@ import java.util.Collection;
 public class QuietCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("quiet").requires((sourceStack) -> sourceStack.hasPermission(0))
-                .then(Commands.literal("add")
+                .then(Commands.literal("set")
                         .then(Commands.argument("targets", EntityArgument.players()).executes(ctx -> {
                                             return quietPlayer(ctx.getSource(), EntityArgument.getPlayers(ctx, "targets"), (byte) 3, 30);
                                         })
