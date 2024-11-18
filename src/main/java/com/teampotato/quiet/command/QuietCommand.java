@@ -13,7 +13,7 @@ import net.minecraft.commands.arguments.TimeArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.Collection;
 
@@ -58,10 +58,7 @@ public class QuietCommand {
         players.forEach(serverPlayer -> {
             QuietData quietData = new QuietData(serverPlayer.getScoreboardName(), serverPlayer.getUUID(), strength, (long) (serverLevel.getGameTime() + time));
             QuietDataUtil.addQuietData(quietData);
-            NetworkHandler.CHANNEL.send(
-                    PacketDistributor.PLAYER.with(() -> serverPlayer),
-                    new QuietDataS2C(quietData)
-            );
+            PacketDistributor.sendToPlayer(serverPlayer, new QuietDataS2C(quietData));
             if (strength >= 3) serverPlayer.sendSystemMessage(Component.translatable("message.quiet.mute", time / 20));
         });
         return 0;

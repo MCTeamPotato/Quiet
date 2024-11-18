@@ -1,18 +1,14 @@
 package com.teampotato.quiet;
 
-import com.google.gson.Gson;
 import com.mojang.logging.LogUtils;
 import com.teampotato.quiet.network.NetworkHandler;
 import com.teampotato.quiet.util.QuietData;
 import com.teampotato.quiet.util.QuietDataUtil;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +16,8 @@ import java.util.List;
 public class Quiet {
     public static final String MODID = "quiet";
     public static final Logger LOGGER = LogUtils.getLogger();
-    public Quiet() {
-        NetworkHandler.register();
+    public Quiet(IEventBus modEventBus, ModContainer modContainer) {
+        modEventBus.addListener(NetworkHandler::register);
         List<QuietData> quietDataList = QuietDataUtil.loadQuietData();
         if (quietDataList == null) {
             quietDataList = new ArrayList<>();
